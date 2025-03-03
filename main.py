@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import utils
-import translate
+import core
 
 
 def main():
@@ -24,12 +24,12 @@ def main():
     #         pass
     print(args)
     print('Connection to the session')
-    translator = translate.Translator()
+    translator = core.Translator()
     print('Session started')
 
     for i in range(10):
         res =  translator.translate(args.data)
-        print(res)
+        print(utils.clean(res))
 
 if __name__ == '__main__':
     main()

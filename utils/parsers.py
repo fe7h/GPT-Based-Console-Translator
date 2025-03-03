@@ -1,5 +1,5 @@
 import argparse
-import prompts
+import core
 
 
 SEP = '"'
@@ -16,7 +16,7 @@ def call_parser() -> argparse.Namespace:
 
     return parser.parse_args()
 
-def data_parser(data: str) -> prompts.UserPrompt:
+def data_parser(data: str) -> core.prompts.UserPrompt:
     sep_pos = data.find(SEP)
     if sep_pos == -1:
         text = data
@@ -26,4 +26,4 @@ def data_parser(data: str) -> prompts.UserPrompt:
         text = text.strip(SEP)
         context = data[:sep_pos]
 
-    return prompts.UserPrompt(text, context)
+    return core.prompts.UserPrompt(text, context)

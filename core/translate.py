@@ -1,9 +1,9 @@
 from g4f.client import Client
-from plyer import temperature
+# from plyer import temperature
 
 import config
-import prompts
-import cleaning
+from . import prompts
+# import cleaning
 
 
 class Translator:
@@ -21,4 +21,4 @@ class Translator:
             temperature=0.7
         )
 
-        return cleaning.clean(response.choices[0].message.content)
+        return response.choices[0].message.content
