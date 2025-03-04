@@ -1,18 +1,24 @@
 #!/usr/bin/env python3
 import utils
 import core
+import config
 
 
 def main():
     loop = True
     coppy = False
 
+    lang1 = config.DEFAULT_LANG1
+    lang2 = config.DEFAULT_LANG2
+
     args = utils.call_parser()
 
     if args.language1:
-        pass
+        lang1 = args.language1
     if args.language2:
-        pass
+        lang2 = args.language2
+
+    system_prompt = core.SystemPrompt(lang1, lang2)
 
     if args.coppy:
         coppy = True
@@ -27,9 +33,10 @@ def main():
     translator = core.Translator()
     print('Session started')
 
-    for i in range(10):
-        res =  translator.translate(args.data)
-        print(utils.clean(res))
+
+    res =  translator.translate(system_prompt, args.data)
+    print(utils.clean(res))
+
 
 if __name__ == '__main__':
     main()
