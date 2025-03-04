@@ -1,8 +1,8 @@
 import argparse
+
+import config
 import core
 
-
-SEP = '"'
 
 def call_parser() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
@@ -17,13 +17,16 @@ def call_parser() -> argparse.Namespace:
     return parser.parse_args()
 
 def data_parser(data: str) -> core.prompts.UserPrompt:
-    sep_pos = data.find(SEP)
+    sep_pos = data.find(config.SEPARATOR)
     if sep_pos == -1:
         text = data
         context = ''
     else:
         text = data[sep_pos:]
-        text = text.strip(SEP)
+        text = text.strip(config.SEPARATOR)
         context = data[:sep_pos]
 
     return core.prompts.UserPrompt(text, context)
+
+def session_call_parser():
+    pass

@@ -1,4 +1,4 @@
-SEPARATOR = '"'
+SEPARATOR = '%'
 
 DEFAULT_LANG1 = 'русский'
 DEFAULT_LANG2 = 'англиский'

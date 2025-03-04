@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+import pyperclip
+
+import config
 import utils
 import core
-import config
 
 
 def main():
@@ -31,11 +33,13 @@ def main():
     print(args)
     print('Connection to the session')
     translator = core.Translator()
-    print('Session started')
-
+    print('Session started\n')
 
     res =  translator.translate(system_prompt, args.data)
-    print(utils.clean(res))
+    res = utils.clean(res)
+    print(res + '\n')
+    if coppy:
+        pyperclip.copy(res)
 
 
 if __name__ == '__main__':
