@@ -8,11 +8,6 @@ import core
 
 
 def main():
-    # loop = True
-    # coppy = False
-
-    # lang1 = config.DEFAULT_LANG1
-    # lang2 = config.DEFAULT_LANG2
 
     args = utils.call_parser()
 
@@ -20,28 +15,28 @@ def main():
     lang2:str  = args.language2 if args.language2 else config.DEFAULT_LANG2
 
     system_prompt = core.SystemPrompt(lang1, lang2)
-    # print(system_prompt.__dict__)
 
     coppy:bool = args.coppy
 
-    print(args)
     print('Connection to the session...')
     translator = core.Translator()
     print('Session started')
 
 
     def common_logic():
-        """General code for a single request and for multiple requests in a loop"""
+        # General code for a single request and for multiple requests in a loop
         res = translator.translate(system_prompt, req)
         res = utils.clean(res)
         print('\n' + res + '\n')
         if coppy: pyperclip.copy(res)
 
-
+    # Handling single mode
     if not args.multiple:
         req = args.data
         common_logic()
+    # Handling multiple mode
     else:
+        # Handling tech commands
         while True:
             req = input('>')
             if req.startswith(config.COMMAND_SYMBOL):
@@ -59,6 +54,7 @@ def main():
                         print(f'Now lang1 is {system_prompt.lang1}, lang2 is {system_prompt.lang2}')
                     except (AttributeError, IndexError):
                         print('Incorrect number or language is not specified')
+            # Processing a translation request
             else:
                 req = utils.data_parser(req)
                 common_logic()

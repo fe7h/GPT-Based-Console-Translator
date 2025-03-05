@@ -5,14 +5,18 @@ import config
 
 @dataclass
 class UserPrompt:
+    """Dataclass for storing translation text
+    and context for that translation.
+    """
     text: str
     context: str = ''
 
 
 @dataclass(slots=True)
 class SystemPrompt:
-    # __slots__ = ('_lang1', '_lang2')
-
+    """Dataclass for storing query languages
+    and prompt for system role in the request to ChatGPT.
+    """
     _lang1: str
     _lang2: str
     content: str = field(init=False)
