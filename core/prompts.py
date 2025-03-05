@@ -9,8 +9,10 @@ class UserPrompt:
     context: str = ''
 
 
-@dataclass
+@dataclass(slots=True)
 class SystemPrompt:
+    # __slots__ = ('_lang1', '_lang2')
+
     _lang1: str
     _lang2: str
     content: str = field(init=False)
