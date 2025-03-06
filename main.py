@@ -18,9 +18,9 @@ def main():
 
     coppy:bool = args.coppy
 
-    print('Connection to the session...')
+    if not args.silence: print('Connection to the session...')
     translator = core.Translator()
-    print('Session started')
+    if not args.silence: print('Session started')
 
 
     def common_logic():

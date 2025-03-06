@@ -16,6 +16,7 @@ def call_parser() -> argparse.Namespace:
 
     parser.add_argument('-m', '--multiple', action='store_true')
     parser.add_argument('-c', '--coppy', action='store_true')
+    parser.add_argument('-s', '--silence', action='store_true')
     parser.add_argument('-l1', '--language1')
     parser.add_argument('-l2', '--language2')
 
