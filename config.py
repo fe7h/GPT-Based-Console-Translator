@@ -1,7 +1,7 @@
 __all__ = ['SEPARATOR', 'COMMAND_SYMBOL', 'DEFAULT_LANG1', 'DEFAULT_LANG2', 'SYSTEM_PROMPTS']
 
 # Separator symbol between context and data for translation
-SEPARATOR = '%'
+SEPARATOR = '*'
 # The symbol from which technical commands start in multiple mode
 COMMAND_SYMBOL = '>'
 

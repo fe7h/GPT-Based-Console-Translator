@@ -16,7 +16,7 @@ def main():
 
     system_prompt = core.SystemPrompt(lang1, lang2)
 
-    coppy:bool = args.coppy
+    copy:bool = args.copy
 
     if not args.silence: print('Connection to the session...')
     translator = core.Translator()
@@ -28,7 +28,7 @@ def main():
         res = translator.translate(system_prompt, req)
         res = utils.clean(res)
         print('\n' + res + '\n')
-        if coppy: pyperclip.copy(res)
+        if copy: pyperclip.copy(res)
 
     # Handling single mode
     if not args.multiple:
@@ -45,9 +45,9 @@ def main():
                     print('Command not found')
                 elif req[0] == 'exit':
                     break
-                elif req[0] == 'coppy':
-                    coppy = False if coppy else True
-                    print('Now coppy is', coppy)
+                elif req[0] == 'copy':
+                    copy = False if copy else True
+                    print('Now copy is', copy)
                 elif 'lang' in req[0]:
                     try:
                         setattr(system_prompt, req[0], req[1])
